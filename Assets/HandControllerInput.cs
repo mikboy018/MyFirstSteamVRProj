@@ -19,6 +19,10 @@ public class HandControllerInput : MonoBehaviour {
     private float lerpTime;
     private Vector3 dashStartPosition;
 
+    //
+    public Transform playerCam;
+    public float moveSpeed = 4f;
+    private Vector3 movementDirection;
 
     // Use this for initialization
     void Start () {
@@ -30,6 +34,13 @@ public class HandControllerInput : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         device = SteamVR_Controller.Input((int)trackedObj.index);
+        if (device.GetPress(SteamVR_Controller.ButtonMask.Grip))
+        {
+            movementDirection = playerCam.transform.forward;
+            movementDirection = new Vector3(movementDirection.x, 0, movementDirection.z);
+            movementDirection = movementDirection * moveSpeed * Time.deltaTime;
+            player.transform.position += movementDirection;
+        }
         if (isDashing)
         {
             //Lerp takes 2 values and smoothes them over time based on a float variable
