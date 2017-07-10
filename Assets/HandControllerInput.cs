@@ -44,14 +44,15 @@ public class HandControllerInput : MonoBehaviour {
         if (isDashing)
         {
             //Lerp takes 2 values and smoothes them over time based on a float variable
-            lerpTime = Time.deltaTime * dashSpeed;
+            lerpTime += 1*dashSpeed;
             player.transform.position = Vector3.Lerp(dashStartPosition, teleportLocation, lerpTime);
-            if(lerpTime >= 1)
+            /*if(lerpTime >= 1)
             {
                 isDashing = false;
                 lerpTime = 0;
-            }
-            
+            }*/
+            else
+            {
                 //if holding button down -- can replace with touchpad
                 if (device.GetPress(SteamVR_Controller.ButtonMask.Trigger))
                 {
@@ -87,7 +88,7 @@ public class HandControllerInput : MonoBehaviour {
                     dashStartPosition = player.transform.position;
                     isDashing = true;
                 }
-            
+            }
         }
         
 	}
