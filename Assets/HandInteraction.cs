@@ -36,7 +36,7 @@ public class HandInteraction : MonoBehaviour {
         //make controller its parent
         coli.transform.SetParent(gameObject.transform);
         //turn off physics
-        coli.GetComponent<RigidBody>().isKinematic = true;
+        coli.GetComponent<Rigidbody>().isKinematic = true;
         //vibrate controller
         device.TriggerHapticPulse(2000);
         Debug.Log("Object grabbed!");
