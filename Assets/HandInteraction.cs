@@ -66,6 +66,10 @@ public class HandInteraction : MonoBehaviour
             //Spawn object currently selected by menu
             SpawnObject();
         }
+        if (device.GetPressDown(SteamVR_Controller.ButtonMask.Trigger))
+        {
+
+        }
     }
 
     private void OnTriggerStay(Collider col)
@@ -119,6 +123,10 @@ public class HandInteraction : MonoBehaviour
     void SpawnObject()
     {
         objectMenuManager.SpawnCurrentObject();
+    }
+    void nextLevel()
+    {
+        objectMenuManager.SwitchLevel();
     }
 }
     

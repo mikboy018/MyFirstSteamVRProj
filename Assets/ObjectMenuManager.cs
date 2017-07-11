@@ -5,6 +5,7 @@ using UnityEngine;
 public class ObjectMenuManager : MonoBehaviour {
     public List<GameObject> objectList; //handled automatically at start
     public List<GameObject> objectPrefabList; //set manually in inspect, must match order of scene menu objects
+    public SteamVR_LoadLevel loadLevel;
 
     public int currentObject = 0;
 
@@ -39,6 +40,11 @@ public class ObjectMenuManager : MonoBehaviour {
     public void SpawnCurrentObject()
     {
         Instantiate(objectPrefabList[currentObject], objectList[currentObject].transform.position, objectList[currentObject].transform.rotation);
+        
+    }
+    public void SwitchLevel()
+    {
+        loadLevel.Trigger();
     }
 	
 	// Update is called once per frame
