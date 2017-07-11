@@ -27,6 +27,10 @@ public class HandInteraction : MonoBehaviour
     void Update()
     {
         device = SteamVR_Controller.Input((int)trackedObj.index);
+        /*if (device.GetTouchDown(SteamVR_Controller.ButtonMask.Trigger))
+        {
+            SteamVR_LoadLevel.Begin("base");
+        }*/
         if (device.GetTouchDown(SteamVR_Controller.ButtonMask.Touchpad))
         {
             touchLast = device.GetAxis(Valve.VR.EVRButtonId.k_EButton_SteamVR_Touchpad).x;
@@ -68,7 +72,8 @@ public class HandInteraction : MonoBehaviour
         }
         if (device.GetPressDown(SteamVR_Controller.ButtonMask.Trigger))
         {
-
+            nextLevel();
+            Debug.Log("Next level!");
         }
     }
 
